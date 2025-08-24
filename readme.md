@@ -1,3 +1,11 @@
+# Awkpedia
+
+Awkpedia is a collaboratively-edited, open-content encyclopedia built using the Django web framework.
+
+<img width="1366" height="768" alt="Screenshot (180)" src="https://github.com/user-attachments/assets/ebe026c0-2de6-4461-8fc0-fbc6e86b8812" />
+<img width="1366" height="768" alt="Screenshot (179)" src="https://github.com/user-attachments/assets/6adbf691-35a1-4dd9-a9b1-278ba901db86" />
+<img width="1366" height="768" alt="Screenshot (181)" src="https://github.com/user-attachments/assets/d2a62e82-04b3-4d91-95e0-968bdc9a4b55" />
+
 # Installation
 
 ## Prerequisites
@@ -11,12 +19,9 @@
 **1. Create a Virtual Environment (Recommended):**
 
 ```
-bash
-  python -m venv venv
-  # or
-  python3 -m venv venv
-
- 
+python -m venv venv
+# or
+python3 -m venv venv 
 ```
 
 2. Activate the Virtual Environment:
@@ -25,19 +30,14 @@ bash
 
     
 ```
-bash
-    source venv/bin/activate
-
+source venv/bin/activate
 ```
 
   •  Windows:
 
     
 ```
-
-bash
-    venv\Scripts\activate
-
+venv\Scripts\activate
 ```
 
 3. Install Dependencies:
@@ -46,14 +46,9 @@ bash
 
   
 ```
-
- 
-bash
-  pip install -r requirements.txt
-  # or
-  pip3 install -r requirements.txt
-
- 
+pip install -r requirements.txt
+# or
+pip3 install -r requirements.txt 
 ```
 
   This command installs all the packages listed in your requirements.txt file, including Django and any other project dependencies.
@@ -64,17 +59,13 @@ bash
 
   
 ```
-bash
+python manage.py makemigrations
+# or
+python3 manage.py makemigrations
 
-  python manage.py makemigrations
-  # or
-  python3 manage.py makemigrations
-
-  python manage.py migrate
-  # or
-  python3 manage.py migrate
-
- 
+python manage.py migrate
+# or
+python3 manage.py migrate
 ```
 
   This command applies any pending database migrations, creating the necessary tables in your database.
@@ -85,14 +76,9 @@ bash
 
   
 ```
-
- 
-bash
-  python manage.py createsuperuser
-  # or
-  python3 manage.py createsuperuser
-
- 
+python manage.py createsuperuser
+# or
+python3 manage.py createsuperuser
 ```
 
   Follow the prompts to enter a username, email address, and password.
@@ -103,9 +89,7 @@ bash
 
   
 ```
-
- 
-bash
-  python manage.py runserver
-  # or
-  python3 manage.py runserver
+python manage.py runserver
+# or
+python3 manage.py runserver
+```
