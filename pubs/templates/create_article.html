@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+{% block title %}  Create article {% endblock title %}
+{% block content %}
+<!--
+
+The **Game of Life**, also known as **Conway's Game of Life** or simply **Life**, is a [cellular automaton](https://en.wikipedia.org/wiki/Cellular_automaton) devised by the British [mathematician](https://en.wikipedia.org/wiki/Mathematician) [John Horton Conway](https://en.wikipedia.org/wiki/John_Horton_Conway) in 1970.[1] It is a [zero-player](https://en.wikipedia.org/wiki/Zero-player_game) game,[2][3] meaning that its evolution is determined by its initial state, requiring no further input. One interacts with the Game of Life by creating an initial configuration and observing how it evolves. It is [Turing complete](https://en.wikipedia.org/wiki/Turing_complete) and can simulate a [universal constructor](https://en.wikipedia.org/wiki/Von_Neumann_universal_constructor) or any other [Turing machine](https://en.wikipedia.org/wiki/Turing_machine).
+
+![](/media/markdownx/ac2bf66a-fb71-4fa0-bf84-625a9a46dec6.gif)
+> A single Gosper's glider gun creating gliders
+
+# Rules
+---
+
+The universe of the Game of Life is an infinite, two-dimensional orthogonal grid of square cells, each of which is in one of two possible states, live or dead (or populated and unpopulated, respectively). Every cell interacts with its eight neighbours, which are the cells that are horizontally, vertically, or diagonally adjacent. At each step in time, the following transitions occur:
+
+1. Any live cell with fewer than two live neighbours dies, as if by underpopulation.
+2. Any live cell with two or three live neighbours lives on to the next generation.
+3. Any live cell with more than three live neighbours dies, as if by overpopulation.
+4. Any dead cell with exactly three live neighbours becomes a live cell, as if by reproduction.
+
+![](/media/markdownx/99750f3a-1811-4b39-a161-7c57b51e6ae0.png)
+> A screenshot of a puffer-type breeder (red) that leaves glider guns (green) in its wake, which in turn create gliders (blue) (animation)
+
+The initial pattern constitutes the seed of the system. The first generation is created by applying the above rules simultaneously to every cell in the seed, live or dead; births and deaths occur simultaneously, and the discrete moment at which this happens is sometimes called a tick.[nb 1] Each generation is a pure function of the preceding one. The rules continue to be applied repeatedly to create further generations.
+
+-->
+    <section>
+        <h1>Create article</h1>
+        <hr>
+        <br>
+    </section>
+    <div>
+        <form method="POST" action="">
+            {% csrf_token %}
+
+            <h2>Article title</h2>
+            <p class="label">What do you want to talk about?</p>
+            {{ article_form.title }}
+
+            <h2>Article content</h2>
+            <p class="label">What's that? Who is? Put more information here</p>
+            <section class="content-actions">
+                <button type="button" class="inactive" id="edit-btn" onclick="toggleAction(false)">Edit</button>
+                <button type="button" class="inactive" id="preview-btn" onclick="toggleAction(true)">Preview</button>
+            </section>
+            {{ pub_form.content }}
+            <br><br>
+            <button class="primary-btn" type="submit">Publish</button>
+        </form>
+    </div>
+
+    {{ pub_form.media }}
+    <script>
+        let previewContent = document.getElementsByClassName('markdownx-preview')[0]
+        let editContent = document.getElementsByClassName('markdownx-editor')[0]
+        let editBtn = document.getElementById('edit-btn')
+        let previewBtn = document.getElementById('preview-btn')
+        let inPreview = false;
+        function toggleAction(val){
+            inPreview = val;
+            console.log(inPreview)
+            if(inPreview){
+                previewContent.classList.remove("hidden")
+                editContent.classList.add("hidden")
+                editBtn.classList.remove("active")
+                previewBtn.classList.add("active")
+            }else{
+                previewContent.classList.add("hidden")
+                editContent.classList.remove("hidden")
+                editBtn.classList.add("active")
+                previewBtn.classList.remove("active")
+            }
+        }
+        toggleAction(false)
+    </script>
+{% endblock content %}

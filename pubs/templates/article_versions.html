@@ -1,0 +1,26 @@
+{% extends "base.html" %} 
+{% block title %} {{ article.title }} {% endblock title %} 
+{% block content %}
+<h1 class="title">{{article.title}}</h1>
+<hr />
+<div class="actions-article">
+  <a href="/wiki/{{article.slug}}" class="inactive">Article</a>
+  <div>
+    <a href="/wiki/{{article.slug}}/edit" class="inactive">Edit</a>
+    <a href="/wiki/{{article.slug}}/version" class="active">View versions</a>
+  </div>
+</div>
+<br />
+<ul>
+  {% for pub in publications %}
+  <li>
+    <p>
+      {% if article_version_info.active_version.id == pub.id %} <span class="green-text">(Active)</span> {% endif %}{% if article_version_info.last_valid_version.id == pub.id %} <span class="green-text">(Last valid version)</span> {% endif %} Article updated on {{ pub.date }}
+      <a href="/wiki/{{article.slug}}?version={{pub.id}}"
+        >View this publication</a
+      >
+    </p>
+  </li>
+  {% endfor %}
+</ul>
+{% endblock content %}

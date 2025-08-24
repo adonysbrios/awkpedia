@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% block title %}  Edit article {% endblock title %}
+{% block content %}
+    <h1 class="title"> {{article.title}} </h1>
+    <hr>
+    <div class="actions-article">
+        <a href="/wiki/{{article.slug}}" class="inactive">Article</a>
+        <div>
+            <a href="/wiki/{{article.slug}}/edit" class="active">Edit</a>
+            <a href="/wiki/{{article.slug}}/version" class="inactive">View versions</a>
+        </div>
+    </div>
+    <br>
+    <div>
+        <form method="POST" action="">
+            {% csrf_token %}
+
+            <h2>Article content</h2>
+            <p class="label">What's that? Who is? Put more information here</p>
+            <section class="content-actions">
+                <button type="button" class="inactive" id="edit-btn" onclick="toggleAction(false)">Edit</button>
+                <button type="button" class="inactive" id="preview-btn" onclick="toggleAction(true)">Preview</button>
+            </section>
+            {{ publication_content.content }}
+            <br><br>
+            <button class="primary-btn" type="submit">Publish</button>
+        </form>
+    </div>
+
+    {{ publication_content.media }}
+    <script>
+        let previewContent = document.getElementsByClassName('markdownx-preview')[0]
+        let editContent = document.getElementsByClassName('markdownx-editor')[0]
+        let editBtn = document.getElementById('edit-btn')
+        let previewBtn = document.getElementById('preview-btn')
+        let inPreview = false;
+        function toggleAction(val){
+            inPreview = val;
+            console.log(inPreview)
+            if(inPreview){
+                previewContent.classList.remove("hidden")
+                editContent.classList.add("hidden")
+                editBtn.classList.remove("active")
+                previewBtn.classList.add("active")
+            }else{
+                previewContent.classList.add("hidden")
+                editContent.classList.remove("hidden")
+                editBtn.classList.add("active")
+                previewBtn.classList.remove("active")
+            }
+        }
+        toggleAction(false)
+    </script>
+{% endblock content %}
