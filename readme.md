@@ -11,7 +11,9 @@ Awkpedia is a collaboratively-edited, open-content encyclopedia built using the 
 ## Prerequisites
 
 •   **Python:**  Make sure you have Python 3.7+ installed. You can check your Python version by running `python --version` or `python3 --version` in your terminal.
+
 •   **pip:**  Python's package installer.  It usually comes bundled with Python. Verify it's installed by running `pip --version` or `pip3 --version`.
+
 •   **Virtual Environment (Recommended):**  Using a virtual environment is highly recommended to isolate project dependencies.
 
 ## Setup Instructions
